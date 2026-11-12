@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Tasks</title>
+  <style>
+    :root {
+      /* Your 4 colors */
+      --c1: #E3FDFD;
+      --c2: #CBF1F5;
+      --c3: #A6E3E9;
+      --c4: #71C9CE;
+
+      /* Dark teal for readable text */
+      --ink: #12383c;
+      --ink-soft: #2f6b71;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", system-ui, Arial, sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 72px 20px 56px;
+      background:
+        radial-gradient(700px 420px at 10% 0%, var(--c3), transparent 65%),
+        radial-gradient(700px 480px at 100% 100%, var(--c3), transparent 65%),
+        linear-gradient(160deg, var(--c1) 0%, var(--c2) 100%);
+      background-attachment: fixed;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+      animation: rise 0.7s ease both;
+    }
+
+    .count {
+      display: inline-block;
+      padding: 7px 18px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--c1);
+      border: 1px solid var(--c3);
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(113, 201, 206, 0.35);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 7vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .bar {
+      width: 90px;
+      height: 6px;
+      margin: 18px auto 0;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--c4), var(--c3));
+    }
+
+    header p {
+      margin-top: 18px;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .tasks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 28px 26px 24px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.55);
+      border: 2px solid var(--c3);
+      border-radius: 22px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 18px rgba(113, 201, 206, 0.18);
+      overflow: hidden;
+      transition: transform 0.25s ease, background 0.25s ease,
+                  border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* big number inside each card */
+    .card .num {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--c4);
+      transition: color 0.25s ease, transform 0.25s ease;
+      transform-origin: left center;
+    }
+
+    .card .label {
+      margin-top: 6px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .card .go {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--c3);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .card .go i {
+      font-style: normal;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--c2);
+      color: var(--ink);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-9px);
+      background: var(--c4);
+      border-color: var(--c4);
+      box-shadow: 0 22px 40px rgba(113, 201, 206, 0.55);
+      outline: none;
+    }
+
+    .card:hover .num,
+    .card:focus-visible .num {
+      color: var(--c1);
+      transform: scale(1.1);
+    }
+
+    .card:hover .go,
+    .card:focus-visible .go {
+      color: var(--ink);
+      border-color: rgba(18, 56, 60, 0.25);
+    }
+
+    .card:hover .go i,
+    .card:focus-visible .go i {
+      background: var(--c1);
+      transform: translateX(5px);
+    }
+
+    .card:active { transform: translateY(-3px); }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="count">8 Tasks</span>
+    <h1>JavaScript Tasks</h1>
+    <div class="bar"></div>
+    <p>Choose a task to open</p>
+  </header>
+
+  <nav class="tasks">
+    <a class="card" href="task1.html" target="_blank"><span class="num">1</span><span class="label">Task 1</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task2.html" target="_blank"><span class="num">2</span><span class="label">Task 2</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task3.html" target="_blank"><span class="num">3</span><span class="label">Task 3</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task4.html" target="_blank"><span class="num">4</span><span class="label">Task 4</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task5.html" target="_blank"><span class="num">5</span><span class="label">Task 5</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task6.html" target="_blank"><span class="num">6</span><span class="label">Task 6</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task7.html" target="_blank"><span class="num">7</span><span class="label">Task 7</span><span class="go">Open <i>→</i></span></a>
+    <a class="card" href="task8.html" target="_blank"><span class="num">8</span><span class="label">Task 8</span><span class="go">Open <i>→</i></span></a>
+  </nav>
+
+</body>
+</html>

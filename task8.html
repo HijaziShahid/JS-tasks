@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAsk 8</title>
+</head>
+<body>
+    
+
+    <script>
+        var name = prompt("Enter your Name :")
+          var urdu = +prompt(" Enter your Urdu Marks :")
+        var english = +prompt("Enter your English Marks :")
+        var math = +prompt(" Enter your Maths Marks :")
+        var computer = +prompt(" Enter your Computer Marks :")
+        var science = +prompt(" Enter your Science Marks :")
+        var marks =  urdu + english + math + computer + science
+        var percentage = marks / 500 *100
+
+        console.log(percentage)
+        console.log(name)
+        console.log(urdu);
+        console.log(english);
+        console.log(math);
+        console.log(computer);
+        console.log(science);
+        console.log(marks);
+
+        alert(`Student Name : ${name}
+
+Urdu : ${urdu}
+English : ${english}
+Math : ${math}
+Computer : ${computer}
+Science : ${science}
+Total Marks : ${marks}
+Percentage : ${percentage}%`)
+    </script>
+</body>
+</html>
